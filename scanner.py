@@ -7,6 +7,7 @@ def readData(filename):
         y = []
 
         reader = csv.reader(f)
+        next(reader) # skip header
         for row in reader:
             x.append(row[:-1])
             y.append(row[-1])
@@ -19,12 +20,14 @@ def readDataAsInts(filename):
         y = []
 
         reader = csv.reader(f)
-        values = [{} for i in range(len(reader[0]))]
+        header = next(reader)
+        values = [{} for i in range(len(header))]
+        next(reader)
         for row in reader:
-            for i in row:
+            for i in range(len(row)):
                 if row[i] not in values[i]:
                     values[i][row[i]] = len(values[i])
-                row[i] = values[i[row[i]]]
+                row[i] = values[i][row[i]]
             x.append(row[:-1])
             y.append(row[-1])
 
