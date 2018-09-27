@@ -1,6 +1,7 @@
 import scanner
 import privacy.util as util
 import numpy as np
+import privacy.novelEntropy as ne
 
 if __name__ == '__main__':
 
@@ -9,8 +10,5 @@ if __name__ == '__main__':
     x = np.asarray(x)
     transpose = np.rot90(x)
     ageProb = util.probabibilityDict(transpose[-1])
-    print(ageProb)
-    sum = 0
-    for i in ageProb:
-        sum+=ageProb[i]
-    print(sum)
+    p=list(ageProb.values())
+    print(ne.novelEntropyBasedMeasure(p))
