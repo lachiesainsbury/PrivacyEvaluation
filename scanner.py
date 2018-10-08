@@ -1,18 +1,19 @@
 import csv
 
-def readData(filename):
 
+def readData(filename):
     with open(filename, 'r') as f:
         x = []
         y = []
 
         reader = csv.reader(f)
-        next(reader) # skip header
+        next(reader)  # skip header
         for row in reader:
             x.append(row[:-1])
             y.append(row[-1])
 
-    return x,y
+    return x, y
+
 
 def readDataAsInts(filename):
     with open(filename, 'r') as f:
@@ -31,4 +32,4 @@ def readDataAsInts(filename):
             x.append(row[:-1])
             y.append(row[-1])
 
-    return x,y
+    return x, y

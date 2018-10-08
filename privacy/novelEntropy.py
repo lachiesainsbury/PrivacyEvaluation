@@ -12,5 +12,6 @@ def H(p):
 def novelEntropyBasedMeasure(p):
     return 1 / H(p)
 
+
 if __name__ == '__main__':
-    print(H([0.05,0.75,0.2]))
+    print(H([0.05, 0.75, 0.2]))

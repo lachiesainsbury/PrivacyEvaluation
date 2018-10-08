@@ -6,9 +6,10 @@ import privacy.novelEntropy as ne
 if __name__ == '__main__':
 
     x, y = scanner.readDataAsInts("../data/adult.csv")
-    #transpose = list(map(list, zip(*x)))
+    # transpose = list(map(list, zip(*x)))
     x = np.asarray(x)
     transpose = np.rot90(x)
-    ageProb = util.probabibilityDict(transpose[-1])
-    p=list(ageProb.values())
-    print(ne.novelEntropyBasedMeasure(p))
+    for i in range(len(transpose)):
+        ageProb = util.probabibilityDict(transpose[i])
+        p = list(ageProb.values())
+        print(ne.novelEntropyBasedMeasure(p))
