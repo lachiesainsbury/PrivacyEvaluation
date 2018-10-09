@@ -1,0 +1,14 @@
+import numpy as np
+import scanner
+
+# Average Equivalence Class Size Metric
+# T = Table
+# |T| = Number of Records
+# |EQs| = Number of Equivalence Classes
+# k = Privacy Requirement -> k-anonymity
+# FORMULA -> T = |T| / |EQs| * k
+
+x, y = scanner.readData("../data/adult.csv")
+
+
+
