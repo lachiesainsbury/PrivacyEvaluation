@@ -2,13 +2,29 @@ import numpy as np
 import scanner
 
 # Average Equivalence Class Size Metric
-# T = Table
-# |T| = Number of Records
-# |EQs| = Number of Equivalence Classes
-# k = Privacy Requirement -> k-anonymity
-# FORMULA -> T = |T| / |EQs| * k
+# BEST CASE -> Each record is generalised in an EQ of k records
 
-x, y = scanner.readData("../data/adult.csv")
+# T = Table
+x, y = scanner.readData("../data/2-anonymised.csv")
+
+# |T| = Number of Records
+z = scanner.returnNumberofRecords("../data/2-anonymised.csv")
+
+# |EQs| = Number of Equivalence Classes
+num = scanner.numberOfEquivalenceClasses("../data/2-anonymised.csv")
+
+# k = Privacy Requirement -> k-anonymity
+k = 2
+
+# FORMULA -> T = |T| / |EQs| * k
+avg = z / num * k
+
+print("Number of Records: ")
+print(z)
+print("Number of Equivalence Classes")
+print(num)
+print("Average Equivelance Class Size Metric")
+print(avg)
 
 
 
