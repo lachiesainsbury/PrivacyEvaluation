@@ -23,7 +23,7 @@ print("Number of Records: ")
 print(z)
 print("Number of Equivalence Classes")
 print(num)
-print("Average Equivelance Class Size Metric")
+print("Average Equivalence Class Size Metric")
 print(avg)
 
 

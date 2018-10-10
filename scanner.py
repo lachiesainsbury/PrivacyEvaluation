@@ -47,6 +47,7 @@ def returnNumberofRecords(filename):
 
     return z
 
+
 def numberOfEquivalenceClasses(filename):
     with open(filename, 'r') as f:
         num = 0
@@ -55,7 +56,7 @@ def numberOfEquivalenceClasses(filename):
         reader = csv.reader(f)
         next(reader)  # skip header
         for row in reader:
-            eq.append(row[0])
+            eq.append(row[:-1])
 
         for i in range(len(eq)):
             if eq[i] != eq[i-1]:
