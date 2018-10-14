@@ -8,7 +8,7 @@ import scanner
 x, y = scanner.readData("../data/2-anonymised.csv")
 
 # |T| = Number of Records
-z = scanner.returnNumberofRecords("../data/2-anonymised.csv")
+z = len(x)
 
 # |EQs| = Number of Equivalence Classes
 num = scanner.numberOfEquivalenceClasses("../data/2-anonymised.csv")
