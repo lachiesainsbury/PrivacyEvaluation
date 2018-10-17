@@ -2,7 +2,7 @@ import numpy as np
 import scanner
 
 # Average Equivalence Class Size Metric
-# BEST CASE -> Each record is generalised in an EQ of k records
+# BEST CASE -> Each record is generalised in an EQ of k records -> Value of 1
 
 
 def calculateAECSM():
