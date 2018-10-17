@@ -9,5 +9,4 @@ if __name__ == '__main__':
     # print(x[0], y[0])
 
     gl.calcGenILoss(x, y)
-    aecsmresult = aecsm.calculateAECSM()
-    print(aecsmresult)
+    aecsm.calculateAECSM()
