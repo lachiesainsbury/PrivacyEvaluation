@@ -3,6 +3,10 @@ import scanner
 
 def calcDiscernibilityMetric():
 
+    print("")
+    print("Discernibility Metric")
+
+    # Original Dataset
     x, y = scanner.readData("data/adult.csv")
 
     equivalenceClassArray, equivalenceClassSizes = scanner.returnEQArray("data/adult.csv")
@@ -23,9 +27,7 @@ def calcDiscernibilityMetric():
     print("Original Dataset -> " + str(dm))
 
 
-
-def calcDiscernibilityMetric2():
-
+    # k = 2
     x, y = scanner.readData("data/2-anonymised.csv")
 
     equivalenceClassArray, equivalenceClassSizes = scanner.returnEQArray("data/2-anonymised.csv")
@@ -47,8 +49,7 @@ def calcDiscernibilityMetric2():
 
 
 
-def calcDiscernibilityMetric10():
-
+    # k = 10
     x, y = scanner.readData("data/10-anonymised.csv")
 
     equivalenceClassArray, equivalenceClassSizes = scanner.returnEQArray("data/10-anonymised.csv")
@@ -70,8 +71,7 @@ def calcDiscernibilityMetric10():
 
 
 
-def calcDiscernibilityMetric50():
-
+    # k = 50
     x, y = scanner.readData("data/50-anonymised.csv")
 
     equivalenceClassArray, equivalenceClassSizes = scanner.returnEQArray("data/50-anonymised.csv")
@@ -91,8 +91,9 @@ def calcDiscernibilityMetric50():
     # print("Discernibility Metric")
     print("k = 50 -> " + str(dm))
 
-def calcDiscernibilityMetric100():
 
+
+    # k = 100
     x, y = scanner.readData("data/100-anonymised.csv")
 
     equivalenceClassArray, equivalenceClassSizes = scanner.returnEQArray("data/100-anonymised.csv")
@@ -111,4 +112,6 @@ def calcDiscernibilityMetric100():
     # print(equivalenceClassSizes)
     # print("Discernibility Metric")
     print("k = 100 -> " + str(dm))
+
+
 

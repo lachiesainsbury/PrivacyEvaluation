@@ -11,10 +11,4 @@ if __name__ == '__main__':
 
     # gl.calcGenILoss(x, y)
     aecsm.calculateAECSM()
-    print("")
-    print("Discernibility Metric")
     dm.calcDiscernibilityMetric()
-    dm.calcDiscernibilityMetric2()
-    dm.calcDiscernibilityMetric10()
-    dm.calcDiscernibilityMetric50()
-    dm.calcDiscernibilityMetric100()
