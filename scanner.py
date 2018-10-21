@@ -35,6 +35,17 @@ def readDataAsInts(filename):
     return x, y
 
 
+def readHierarchy(filename):
+    with open(filename, 'r') as f:
+        x = []
+        reader = csv.reader(f)
+
+        for row in reader:
+            x.append(row[0].split(";"))
+
+    return x
+
+
 def numberOfEquivalenceClasses(filename):
     with open(filename, 'r') as f:
         num = 0
