@@ -1,14 +1,19 @@
 # If you don't have the anytree module installed, open cmd/bash/shell
 # and run the command: pip install anytree
 from anytree import Node, RenderTree
+from anytree import LevelOrderIter
 
 
-root = Node("*")
 
+# Builds a hierarchy in a tree data structure given the rows of the csv input
 def buildHierarchy(x):
+    root = Node("*")
+
     for row in x:
-        node = newTree(row, 0)
-        printHierarchy(node.root)
+        tree = newTree(row, 0)
+        mergeTrees(root, tree.root)
+
+    # printHierarchy(root)
 
 
 # Recursively creates a tree structure from a provided hierarchy string,
@@ -21,10 +26,33 @@ def newTree(x, index):
         return None
 
 
-# Combines two given trees based upon common elements to produce a tree
-# with unique elements only. The root of the merged tree is returned.
-def merge(tree1, tree2):
-    return tree1
+# Merges two trees together into tree1. The nodes are merged on equivalent
+# branches so that the root tree only contains unique elements.
+def mergeTrees(tree1, tree2):
+    # For each node in a breadth first traversal of the given tree
+    for node in LevelOrderIter(tree2):
+        exists = False
+
+        # If the tree node doesn't have a parent, skip it
+        if node.parent == None:
+            continue
+
+        # Otherwise, find the current nodes parent in the root tree
+        found = findNode(tree1, node.parent.name)
+
+        # Loop through each child of the found node in the root tree
+        for child in found.children:
+            # If a child exists which matches our current node, move onto the
+            # next bfs node as we don't want duplicates
+            if child.name == node.name:
+                exists = True
+                break
+
+        # If we looped through every child and the node doesn't exist, then
+        # set it as a child of the found node
+        if exists == False:
+            node.parent = found
+            return
 
 
 # Given a root node and a node name, recursively searches for a node in
@@ -32,9 +60,11 @@ def merge(tree1, tree2):
 def findNode(node, nodeName):
     if node.name == nodeName:
         return node
-    else:
-        for child in node.children:
-            return findNode(child, nodeName)
+
+    for child in node.children:
+        n = findNode(child, nodeName)
+        if n:
+            return n
 
     return None
 

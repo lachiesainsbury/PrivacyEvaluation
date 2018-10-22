@@ -10,8 +10,6 @@ def calcGenILoss(x, y):
 
     hierarchies = []
 
-    #for filename in os.listdir(hierarchyDirectory):
-        #hierarchy = hb.buildHierarchy(scanner.readHierarchy(hierarchyDirectory + filename))
-        #hierarchies.append(hierarchy)
-
-    hb.buildHierarchy(scanner.readHierarchy(hierarchyDirectory + "maritalstatus.csv"))
+    for filename in os.listdir(hierarchyDirectory):
+        hierarchy = hb.buildHierarchy(scanner.readHierarchy(hierarchyDirectory + filename))
+        hierarchies.append(hierarchy)
