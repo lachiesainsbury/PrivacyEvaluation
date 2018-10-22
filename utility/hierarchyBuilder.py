@@ -4,7 +4,6 @@ from anytree import Node, RenderTree
 from anytree import LevelOrderIter
 
 
-
 # Builds a hierarchy in a tree data structure given the rows of the csv input
 def buildHierarchy(x):
     root = Node("*")
@@ -13,7 +12,8 @@ def buildHierarchy(x):
         tree = newTree(row, 0)
         mergeTrees(root, tree.root)
 
-    # printHierarchy(root)
+    return root
+
 
 
 # Recursively creates a tree structure from a provided hierarchy string,
@@ -24,6 +24,7 @@ def newTree(x, index):
         return node
     else:
         return None
+
 
 
 # Merges two trees together into tree1. The nodes are merged on equivalent
@@ -55,6 +56,7 @@ def mergeTrees(tree1, tree2):
             return
 
 
+
 # Given a root node and a node name, recursively searches for a node in
 # the tree which matches the node name.
 def findNode(node, nodeName):
@@ -67,6 +69,18 @@ def findNode(node, nodeName):
             return n
 
     return None
+
+
+
+# Returns the total number of nodes on the level below the given node.
+def countNodesOnLevelBelow(node):
+    nodeCount = len(node.children)
+
+    for sibling in node.siblings:
+        nodeCount += len(sibling.children)
+
+    return nodeCount
+
 
 
 # Prints a hierarchy in a readable format.
