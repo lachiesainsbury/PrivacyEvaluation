@@ -6,7 +6,7 @@ import utility.discMetric as dm
 
 if __name__ == '__main__':
 
-    x, y = scanner.readData("data/2-anonymised.csv")
+    x, y = scanner.readData("data/adult.csv")
 
     print("Generalized Information Loss: ", gil.calcGenILoss(x), "\n")
 

@@ -1,5 +1,6 @@
 import scanner
 import os
+import math
 import utility.hierarchyBuilder as hb
 
 
@@ -34,7 +35,7 @@ def calcGenILoss(x):
                 # Calculates the number of generalized nodes
                 generalizedInterval = len(node.children) - 1
                 # Calculates the total number of nodes at one level lower in the hierarchy
-                attributeInterval = hb.countNodesOnLevelBelow(node)
+                attributeInterval = hb.countNodesOnLevelBelow(node) - 1
 
                 loss += generalizedInterval / attributeInterval
 
