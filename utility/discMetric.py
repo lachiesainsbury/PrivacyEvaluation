@@ -1,4 +1,5 @@
 import scanner
+import math
 
 
 def calcDiscernibilityMetric(kv, ds):
@@ -13,11 +14,10 @@ def calcDiscernibilityMetric(kv, ds):
 
     for i in range(len(equivalenceClassArray)):
         if equivalenceClassSizes[i] >= k:
-            dm = dm + (equivalenceClassSizes[i] * 2)
+            dm = dm + (equivalenceClassSizes[i] ** 2)
 
         else:
             dm = dm + (len(x) + equivalenceClassSizes[i])
-
 
     return str(dm)
 

@@ -23,11 +23,13 @@ if __name__ == '__main__':
     for i in range(len(kvalues)):
         print("k = " + str(kvalues[i]) + " -> " + aecsmarray[i])
 
+
     print("")
     #Discernibility Metric
     for i in range(len(kvalues)):
         dmarray.append(dm.calcDiscernibilityMetric(kvalues[i], datasets[i]))
+    # print(dm.calcDiscernibilityMetric(3, "data/test.csv"))
     print("Discernibility Metric")
     for i in(range(len(kvalues))):
-        print("k = " + str(kvalues[i]) + " -> " + dmarray[i])
+       print("k = " + str(kvalues[i]) + " -> " + dmarray[i])
 

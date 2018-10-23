@@ -75,12 +75,17 @@ def returnEQArray(filename):
             eq.append(row[:-1])
 
         for i in range(len(eq)):
-            if eq[i] != eq[i-1]:
-                eq2.append(i)
-                num.append(count)
-                count = 1
+            if (i+1) < len(eq):
+                if eq[i+1] != eq[i]:
+                    eq2.append(eq[i])
+                    num.append(count)
+                    count = 1
+                else:
+                    count = count + 1
             else:
-                count = count + 1
+                eq2.append(eq[i])
+                num.append(count)
+
 
     return eq2, num
 
