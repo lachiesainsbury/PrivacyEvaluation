@@ -5,7 +5,7 @@ import math
 def calcDiscernibilityMetric(kv, ds):
 
 
-    x, y = scanner.readData("data/adult.csv")
+    x, y = scanner.readData(ds)
 
     equivalenceClassArray, equivalenceClassSizes = scanner.returnEQArray(ds)
 
@@ -17,7 +17,7 @@ def calcDiscernibilityMetric(kv, ds):
             dm = dm + (equivalenceClassSizes[i] ** 2)
 
         else:
-            dm = dm + (len(x) + equivalenceClassSizes[i])
+            dm = dm + (len(x) * equivalenceClassSizes[i])
 
     return str(dm)
 
