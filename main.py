@@ -7,7 +7,8 @@ import utility.discMetric as dm
 if __name__ == '__main__':
 
     aecsmarray = []
-    kvalues = ["1", "2", "10", "50", "100"]
+    kvalues = [1,2,10,50,100]
+    datasets = ["data/adult.csv", "data/2-anonymised.csv", "data/10-anonymised.csv", "data/50-anonymised.csv", "data/100-anonymised.csv"]
     dmarray = []
 
     x, y = scanner.readData("data/adult.csv")
@@ -16,23 +17,17 @@ if __name__ == '__main__':
 
 
     # Average Equivalence Class Size Metric
-    aecsmarray.append(aecsm.calculateAECSM(1, "data/adult.csv"))
-    aecsmarray.append(aecsm.calculateAECSM(2, "data/2-anonymised.csv"))
-    aecsmarray.append(aecsm.calculateAECSM(10, "data/10-anonymised.csv"))
-    aecsmarray.append(aecsm.calculateAECSM(50, "data/50-anonymised.csv"))
-    aecsmarray.append(aecsm.calculateAECSM(100, "data/100-anonymised.csv"))
+    for i in range(len(kvalues)):
+        aecsmarray.append(aecsm.calculateAECSM(kvalues[i], datasets[i]))
     print("Average Equivalence Class Size Metric")
     for i in range(len(kvalues)):
-        print("k = " + kvalues[i] + " -> " + aecsmarray[i])
+        print("k = " + str(kvalues[i]) + " -> " + aecsmarray[i])
 
     print("")
     #Discernibility Metric
-    dmarray.append(dm.calcDiscernibilityMetric(1, "data/adult.csv"))
-    dmarray.append(dm.calcDiscernibilityMetric(2, "data/2-anonymised.csv"))
-    dmarray.append(dm.calcDiscernibilityMetric(10, "data/10-anonymised.csv"))
-    dmarray.append(dm.calcDiscernibilityMetric(50, "data/50-anonymised.csv"))
-    dmarray.append(dm.calcDiscernibilityMetric(100, "data/100-anonymised.csv"))
+    for i in range(len(kvalues)):
+        dmarray.append(dm.calcDiscernibilityMetric(kvalues[i], datasets[i]))
     print("Discernibility Metric")
     for i in(range(len(kvalues))):
-        print("k = " + kvalues[i] + " -> " + dmarray[i])
+        print("k = " + str(kvalues[i]) + " -> " + dmarray[i])
 
