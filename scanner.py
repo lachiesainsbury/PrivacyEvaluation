@@ -1,5 +1,7 @@
 import csv
 
+import pandas as pandas
+
 
 def readData(filename):
     with open(filename, 'r') as f:
@@ -90,3 +92,30 @@ def returnEQArray(filename):
                 num.append(count)
 
     return eq2, num
+
+
+def read_data_columns(filename):
+    with open(filename, 'r') as f:
+        df = pandas.read_csv(f)
+
+        is_number = {i: True for i in df.keys()}
+
+        for attribute in df.keys():
+            for cell_value in df[attribute]:
+                if is_number[attribute]:
+                    try:
+                        int(cell_value)
+                    except ValueError:
+                        is_number[attribute] = False
+
+        x = {i: [] for i in df.keys()}
+        for attribute in df.keys():
+            if is_number[attribute]:
+                for cell_value in df[attribute]:
+                    x[attribute].append(cell_value)
+            else:
+                attribute_set = sorted(set(df[attribute]))
+                enumerate_set = {key: value for (key, value) in zip(attribute_set, range(len(attribute_set)))}
+                for cell_value in df[attribute]:
+                    x[attribute].append(enumerate_set[cell_value])
+    return x
