@@ -1,16 +1,12 @@
 import math
 
-
-def H(p):
-    # p = probabilities for all values of a single attribute
+def novelEntropyBasedMeasure(p):
     sum = 0
     for i in range(len(p)):
         sum += p[i] * math.log(p[i], 2)
-    return -1 * sum
+    H = -1 * sum
 
-
-def novelEntropyBasedMeasure(p):
-    return 1 / H(p)
+    return 1 / H
 
 
 if __name__ == '__main__':

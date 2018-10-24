@@ -12,6 +12,8 @@ def readData(filename):
             x.append(row[:-1])
             y.append(row[-1])
 
+        [x.append(["*", "*", "*", "*", "*", "*", "*", "*"]) for i in range(30163 - len(y))]
+
     return x, y
 
 
@@ -57,10 +59,11 @@ def numberOfEquivalenceClasses(filename):
             eq.append(row[:-1])
 
         for i in range(len(eq)):
-            if eq[i] != eq[i-1]:
+            if eq[i] != eq[i - 1]:
                 num = num + 1
 
     return num
+
 
 def returnEQArray(filename):
     with open(filename, 'r') as f:
@@ -75,8 +78,8 @@ def returnEQArray(filename):
             eq.append(row[:-1])
 
         for i in range(len(eq)):
-            if (i+1) < len(eq):
-                if eq[i+1] != eq[i]:
+            if (i + 1) < len(eq):
+                if eq[i + 1] != eq[i]:
                     eq2.append(eq[i])
                     num.append(count)
                     count = 1
@@ -86,6 +89,4 @@ def returnEQArray(filename):
                 eq2.append(eq[i])
                 num.append(count)
 
-
     return eq2, num
-
