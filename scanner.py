@@ -12,8 +12,6 @@ def readData(filename):
             x.append(row[:-1])
             y.append(row[-1])
 
-        [x.append(["*", "*", "*", "*", "*", "*", "*", "*"]) for i in range(30163 - len(y))]
-
     return x, y
 
 

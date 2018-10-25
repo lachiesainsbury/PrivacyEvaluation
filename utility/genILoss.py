@@ -45,7 +45,6 @@ def calcGenILoss(x):
     return loss
 
 
-
 # Builds a hierarchy for each csv file within the hierarchyDirectory
 def buildHierarchies():
     for filename in os.listdir(hierarchyDirectory):

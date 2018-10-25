@@ -15,7 +15,6 @@ def buildHierarchy(x):
     return root
 
 
-
 # Recursively creates a tree structure from a provided hierarchy string,
 # and returns the root node of the tree.
 def newTree(x, index):
@@ -24,7 +23,6 @@ def newTree(x, index):
         return node
     else:
         return None
-
 
 
 # Merges two trees together into tree1. The nodes are merged on equivalent
@@ -56,7 +54,6 @@ def mergeTrees(tree1, tree2):
             return
 
 
-
 # Given a root node and a node name, recursively searches for a node in
 # the tree which matches the node name.
 def findNode(node, nodeName):
@@ -71,7 +68,6 @@ def findNode(node, nodeName):
     return None
 
 
-
 # Returns the total number of nodes on the level below the given node.
 def countNodesOnLevelBelow(node):
     nodeCount = len(node.children)
@@ -80,7 +76,6 @@ def countNodesOnLevelBelow(node):
         nodeCount += len(sibling.children)
 
     return nodeCount
-
 
 
 # Prints a hierarchy in a readable format.
