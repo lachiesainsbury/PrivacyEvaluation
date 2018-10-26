@@ -97,15 +97,11 @@ def generateSalaries(x, y):
     occupations = getColumn(x, 4)
     for i in range(len(x)):
         x[i].append(getSalary(occupations))
-        print(x[i])
 
     with open("data\AdultActualValue.csv", "w", newline='') as csv_file:
         writer = csv.writer(csv_file, delimiter=',')
         for line in x:
             writer.writerow(line)
-
-    # y (income) has been replaced with integers
-    # Write y to adult.csv as a replacement for income column
 
 
 def getColumn(x, i):
