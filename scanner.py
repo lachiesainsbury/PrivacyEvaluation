@@ -107,6 +107,7 @@ def read_data_columns(filename):
                         int(cell_value)
                     except ValueError:
                         is_number[attribute] = False
+                        break
 
         x = {i: [] for i in df.keys()}
         for attribute in df.keys():
