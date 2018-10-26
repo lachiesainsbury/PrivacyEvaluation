@@ -17,7 +17,7 @@ def calculateAECSM(kv, ds):
     k = kv
     # FORMULA -> T = |T| / |EQs| * k
     avg = z / (num * k)
-    return ("%.2f" % avg)
+    return str(z), str(num), ("%.2f" % avg)
 
 
 
