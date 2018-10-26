@@ -10,8 +10,9 @@ if __name__ == '__main__':
     datasets = ["data/adult.csv", "data/2-anonymised.csv", "data/10-anonymised.csv", "data/50-anonymised.csv", "data/100-anonymised.csv"]
     dmarray = []
 
-    x, y = scanner.readData("data/2-anonymised.csv")
+    x, y = scanner.readData("data/adult.csv")
 
+    scanner.generateSalaries(x, y)
     print("Generalized Information Loss: ", gil.calcGenILoss(x), "\n")
 
 

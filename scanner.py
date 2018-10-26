@@ -1,5 +1,5 @@
 import csv
-
+from random import randint
 
 def readData(filename):
     with open(filename, 'r') as f:
@@ -88,3 +88,56 @@ def returnEQArray(filename):
                 num.append(count)
 
     return eq2, num
+
+
+def generateSalaries(x, y):
+    occupations = getColumn(x, 4)
+
+    for i in range(len(x)):
+        y[i] = getSalary(occupations[i])
+
+    # y (income) has been replaced with integers
+    # Write y to adult.csv as a replacement for income column
+
+
+def getColumn(x, i):
+    return [row[i] for row in x]
+
+
+def getSalary(occupation):
+    if occupation == "Tech-support":
+        return randint(33, 53)
+    elif occupation == "Craft-repair":
+        return randint(25, 45)
+    elif occupation == "Other-service":
+        return randint(41, 61)
+    elif occupation == "Sales":
+        return randint(42, 62)
+    elif occupation == "Exec-managerial":
+        return randint(67, 87)
+    elif occupation == "Prof-specialty":
+        return randint(56, 76)
+    elif occupation == "Handlers-cleaners":
+        return randint(20, 40)
+    elif occupation == "Machine-op-inspct":
+        return randint(32, 52)
+    elif occupation == "Adm-clerical":
+        return randint(28, 48)
+    elif occupation == "Farming-fishing":
+        return randint(39, 59)
+    elif occupation == "Transport-moving":
+        return randint(41, 61)
+    elif occupation == "Priv-house-serv":
+        return randint(16, 36)
+    elif occupation == "Protective-serv":
+        return randint(59, 79)
+    elif occupation == "Armed-Forces":
+        return randint(34, 54)
+    elif occupation == "Technical":
+        return randint(35, 66)
+    elif occupation == "Other":
+        return randint(26, 69)
+    elif occupation == "Non-technical":
+        return randint(30, 77)
+    else:
+        return randint(26, 77)
