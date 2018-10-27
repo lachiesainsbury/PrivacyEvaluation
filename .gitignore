@@ -1,3 +1,5 @@
 # PyCharm IDE files
 .idea/
 __pycache__/
+# Graph directory
+graphs/

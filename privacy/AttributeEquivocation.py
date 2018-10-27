@@ -1,4 +1,9 @@
 import math
+import time
+
+import matplotlib.pyplot as plt
+
+from privacy import util
 
 
 def equivocate(x, p):
@@ -59,3 +64,26 @@ def entropy(p):
     for i in range(len(p)):
         entropy_sum += p[i] * math.log(1 / p[i], 2)
     return entropy_sum
+
+
+def export_attribute_equivocation_graph(name, attribute, output):
+    start_time = time.time()
+    probabilities = util.probabibilityDict(attribute)
+    print("Attribute Equivocation :", name)
+    item = []
+    item_prob = []
+    for tup in sorted(probabilities):
+        item.append(tup)
+        item_prob.append(probabilities[tup])
+    equiv = equivocate(item, item_prob)
+
+    plt.step(list(equiv.keys()), list(equiv.values()), where="post")
+    plt.fill_between(list(equiv.keys()), list(equiv.values()), step="post", alpha="0.1")
+    plt.grid(True, linestyle="--", color="0.5")
+    plt.xlabel("ε")
+    plt.ylabel("H(ε)")
+    plt.figtext(0.7, 0.9, "Area = {:0.2f}".format(sum(equiv.values())), backgroundcolor="white")
+    # print("AttEquiv_{}.svg".format(name))
+    plt.savefig("{}AttEquiv_{}.svg".format(output, name))
+    plt.clf()
+    print("Attribute Equivocation :", name, "finished in", time.time() - start_time)
