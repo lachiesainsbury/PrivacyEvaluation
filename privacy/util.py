@@ -33,7 +33,10 @@ def adultGeneralisedProbability(probabilities):
                 kProb = probabilities[row].pop(k) # remove generalised term from probabilities & get the prob
                 lessGeneralised = heirarchy[row][k]
                 for i in lessGeneralised:
-                    probabilities[row][i] = kProb/len(lessGeneralised)
+                    currentProb = 0
+                    if i in probabilities[row]:
+                        currentProb = probabilities[row][i]
+                    probabilities[row][i] = (kProb/len(lessGeneralised)) + currentProb
 
     return probabilities
 

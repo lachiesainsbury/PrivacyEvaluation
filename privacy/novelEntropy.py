@@ -1,13 +1,9 @@
 import math
 
-def novelEntropyBasedMeasure(p):
+def entropy(p):
     sum = 0
     for i in range(len(p)):
-        sum += p[i] * math.log(p[i], 2)
+        sum += p[i] * math.log2(p[i])
     H = -1 * sum
 
-    return 1 / H
-
-
-if __name__ == '__main__':
-    print(H([0.05, 0.75, 0.2]))
+    return H
