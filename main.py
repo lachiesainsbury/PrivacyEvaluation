@@ -15,13 +15,15 @@ if __name__ == '__main__':
                 "data/adult/income-values/25-anonymised.csv", "data/adult/income-values/50-anonymised.csv",
                 "data/adult/income-values/75-anonymised.csv", "data/adult/income-values/100-anonymised.csv"]
 
-
+    '''
     gils = []
     for i in range(len(datasets)):
         x, y = scanner.readData(datasets[i])
         gils.append(gil.calcGenILoss(x))
 
-    graph.plot(kvalues, gils, "Generalized Information Loss as k increases", "k", "Generalized Information Loss")
+    graph.plot(kvalues, gils, "'Adult' Generalized Information Loss as k increases", "k", "Generalized Information Loss")
+    print(gils)
+    '''
 
     # Average Equivalence Class Size Metric
     for i in range(len(kvalues)):

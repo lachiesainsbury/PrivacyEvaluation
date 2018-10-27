@@ -4,7 +4,7 @@ import math
 import utility.hierarchyBuilder as hb
 
 
-hierarchyDirectory = "data/arx/hierarchies/adult/"
+hierarchyDirectory = "data/arx/hierarchies/bike-sharing/"
 hierarchies = []
 
 def calcGenILoss(x):
@@ -27,8 +27,6 @@ def calcGenILoss(x):
             # Find the node at x[j][i] in the current attributes hierarchy
             node = hb.findNode(hierarchy, x[j][i])
 
-            if node == None:
-                print(i, j)
             # If the node has no children, loss = 0, so just skip it
             if not node.children:
                 continue
