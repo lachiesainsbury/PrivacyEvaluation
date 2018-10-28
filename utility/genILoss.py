@@ -4,7 +4,7 @@ import math
 import utility.hierarchyBuilder as hb
 
 
-hierarchyDirectory = "data/arx/hierarchies/"
+hierarchyDirectory = "data/arx/hierarchies/bike-sharing/"
 hierarchies = []
 
 def calcGenILoss(x):

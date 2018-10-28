@@ -1,4 +1,5 @@
 import scanner
+import graph
 import utility.genILoss as gil
 import utility.aecsm as aecsm
 import utility.discMetric as dm
@@ -8,15 +9,21 @@ if __name__ == '__main__':
     aecsmresults = []
     numclasses = []
     tablelength = []
-    kvalues = [2, 5, 10, 25, 50, 75, 100]
-    datasets = ["data/adult/income-values/2-anonymised.csv", "data/adult/income-values/5-anonymised.csv",
-                "data/adult/income-values/10-anonymised.csv", "data/adult/income-values/25-anonymised.csv",
-                "data/adult/income-values/50-anonymised.csv", "data/adult/income-values/75-anonymised.csv",
-                "data/adult/income-values/100-anonymised.csv"]
+    kvalues = [1, 2, 5, 10, 25, 50, 75, 100]
+    datasets = ["data/adult/income-values/adult.csv", "data/adult/income-values/2-anonymised.csv",
+                "data/adult/income-values/5-anonymised.csv", "data/adult/income-values/10-anonymised.csv",
+                "data/adult/income-values/25-anonymised.csv", "data/adult/income-values/50-anonymised.csv",
+                "data/adult/income-values/75-anonymised.csv", "data/adult/income-values/100-anonymised.csv"]
 
-    x, y = scanner.readData("data/adult/income-values/adult.csv")
+    '''
+    gils = []
+    for i in range(len(datasets)):
+        x, y = scanner.readData(datasets[i])
+        gils.append(gil.calcGenILoss(x))
 
-    print("Generalized Information Loss: ", gil.calcGenILoss(x), "\n")
+    graph.plot(kvalues, gils, "'Adult' Generalized Information Loss as k increases", "k", "Generalized Information Loss")
+    print(gils)
+    '''
 
     # Average Equivalence Class Size Metric
     for i in range(len(kvalues)):
