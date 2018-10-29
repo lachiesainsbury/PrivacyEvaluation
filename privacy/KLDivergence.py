@@ -3,7 +3,7 @@ import privacy.util
 import math
 
 def KL(data):
-    original, y = scanner.readData("../data/adult.csv")
+    original, y = scanner.readData("../data/adult/income-classes/adult.csv")
     original = privacy.util.probabilities(original)
 
     anon = privacy.util.probabilities(data)
@@ -19,7 +19,7 @@ def KL(data):
         sum = 0
         for i in probPairs:
             sum += dif(i)
-        print(sum)
+        #print(sum)
         attributeSums +=sum
     return attributeSums
 
