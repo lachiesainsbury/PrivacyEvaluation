@@ -17,6 +17,11 @@ if __name__ == '__main__':
                 "data/adult/income-values/25-anonymised.csv", "data/adult/income-values/50-anonymised.csv",
                 "data/adult/income-values/75-anonymised.csv", "data/adult/income-values/100-anonymised.csv"]
 
+    datasetsBikeSharing = ["data/bike-sharing/bike-sharing.csv", "data/bike-sharing/2-anonymised.csv",
+                           "data/bike-sharing/5-anonymised.csv", "data/bike-sharing/10-anonymised.csv",
+                           "data/bike-sharing/25-anonymised.csv", "data/bike-sharing/50-anonymised.csv",
+                           "data/bike-sharing/75-anonymised.csv", "data/bike-sharing/100-anonymised.csv"]
+
     datasetsBike = ["data/bike-sharing/2-anonymised.csv", "data/bike-sharing/5-anonymised.csv",
                     "data/bike-sharing/25-anonymised.csv", "data/bike-sharing/100-anonymised.csv"]
 
@@ -39,13 +44,13 @@ if __name__ == '__main__':
 
     # Generalized Information Loss Metric -> Bike Dataset
     lossValues = []
-    for i in range(len(discernibilityBikeDataset)):
-        x, y = scanner.readData(discernibilityBikeDataset[i])
+    for i in range(len(datasetsBikeSharing)):
+        x, y = scanner.readData(datasetsBikeSharing[i])
         lossValues.append(gil.calcGenILoss(x, "data/arx/hierarchies/bike-sharing/"))
 
     print("Generalized Information Loss Metric -> Bike Sharing Dataset")
     for i in range(len(lossValues)):
-        print("k = " + str(discernibilityKValues[i]) + " GenILoss -> " + str("{0:.2f}".format(lossValues[i])))
+        print("k = " + str(kvalues[i]) + " GenILoss -> " + str("{0:.2f}".format(lossValues[i])))
     print("")
 
 
