@@ -45,7 +45,7 @@ def adultGeneralisedProbability(probabilities):
 
 
 def buildHierarchies():
-    filenames = glob.glob("../data/arx/hierarchies/*.csv")
+    filenames = glob.glob("../data/arx/hierarchies/adult/*.csv")
     fileHierarchies = []
     for file in filenames:
         hierarchy = readHierarchy(file)

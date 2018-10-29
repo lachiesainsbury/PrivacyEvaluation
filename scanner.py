@@ -1,8 +1,6 @@
 import csv
 from random import randint
 
-import pandas
-
 import pandas as pandas
 
 
@@ -123,6 +121,7 @@ def read_data_columns(filename):
     return x
 
 
+# Generates new random salaries and writes these values to file
 def generateSalaries(x, y):
     occupations = getColumn(x, 4)
     for i in range(len(x)):
@@ -138,6 +137,7 @@ def getColumn(x, i):
     return [row[i] for row in x]
 
 
+# Returns a randomized salary within a given window for each occupation
 def getSalary(occupation):
     if occupation == "Tech-support":
         return randint(33, 53)

@@ -27,8 +27,6 @@ def calcGenILoss(x, hierarchyDirectory):
             # Find the node at x[j][i] in the current attributes hierarchy
             node = hb.findNode(hierarchy, x[j][i])
 
-            if node == None:
-                print(i, j, x[j][i])
             # If the node has no children, loss = 0, so just skip it
             if not node.children:
                 continue

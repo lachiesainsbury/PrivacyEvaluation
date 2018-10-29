@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 import scanner
 import privacy.util as util
-import privacy.novelEntropy as ne
+import privacy.entropy as ne
 from privacy import AttributeEquivocation as ae
 
 
@@ -25,12 +25,12 @@ def att_equiv_graphs(input_folders, graph_out_dir):
 
 
 if __name__ == '__main__':
-    # x, y = scanner.readData("../data/full-anonymised.csv")
-    # prob = util.probabilities(x)
-    # for i in prob:
-    #     p = list(i.values())
-    #     print(ne.novelEntropyBasedMeasure(p))
+    x, y = scanner.readData("../data/adult/income-classes/100-anonymised.csv")
+    prob = util.probabilities(x)
+    for i in prob:
+        p = list(i.values())
+        print(ne.entropy(p))
 
-    att_equiv_graphs(["",
-               "adult/income-values/",
-               "bike-sharing/"], "../graphs/AttEquiv/")
+    # att_equiv_graphs(["",
+    #            "adult/income-values/",
+    #            "bike-sharing/"], "../graphs/AttEquiv/")
