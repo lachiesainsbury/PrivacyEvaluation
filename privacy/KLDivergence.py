@@ -2,8 +2,10 @@ import scanner
 import privacy.util
 import math
 
+originalFile = ""
+
 def KL(data):
-    original, y = scanner.readData("../data/adult/income-classes/adult.csv")
+    original, y = scanner.readData(originalFile)
     original = privacy.util.probabilities(original)
 
     anon = privacy.util.probabilities(data)
@@ -14,6 +16,7 @@ def KL(data):
         probPairs = []
         # print(classes)
         for j in classes:
+            #print(i,j)
             probPairs.append((original[i][j],anon[i][j]))
         # print(probPairs)
         sum = 0

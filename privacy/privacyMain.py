@@ -49,15 +49,3 @@ def att_equiv_graphs(input_files, graph_out_dir):
             read_data_col = scanner.read_data_columns("data/{}".format(input_file_path))
             ae.export_attribute_equivocation_graph(name, read_data_col[list(read_data_col.keys())[-1]], graph_out_dir)
 
-
-if __name__ == '__main__':
-    x, y = scanner.readData("../data/adult/income-classes/100-anonymised.csv")
-    prob = util.probabilities(x)
-    for i in prob:
-        p = list(i.values())
-        print(ne.entropy(p))
-    # x, y = scanner.readData("../data/adult/income-values/2-anonymised.csv")
-    # prob = util.probabilities(x)
-    # for i in prob:
-    #     p = list(i.values())
-    #     print(ne.novelEntropyBasedMeasure(p))

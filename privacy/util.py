@@ -2,6 +2,7 @@ import numpy as np
 from scanner import readHierarchy
 import glob
 
+hierarchies = []
 
 def probabilities(data):
     x = np.asarray(data)
@@ -45,7 +46,7 @@ def adultGeneralisedProbability(probabilities):
 
 
 def buildHierarchies():
-    filenames = glob.glob("../data/arx/hierarchies/adult/*.csv")
+    filenames = hierarchies
     fileHierarchies = []
     for file in filenames:
         hierarchy = readHierarchy(file)

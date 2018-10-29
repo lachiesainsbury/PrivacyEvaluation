@@ -4,6 +4,10 @@ import utility.genILoss as gil
 import utility.aecsm as aecsm
 import utility.discMetric as dm
 from privacy import privacyMain
+from privacy import util
+from privacy import entropy
+from privacy import KLDivergence as KL
+import glob
 
 if __name__ == '__main__':
     dmarray = []
@@ -122,4 +126,54 @@ if __name__ == '__main__':
         [["adult/income-values-not-suppressed/", ["Age", "Education"]]])
 
 
+    # Entropy Adult
+    print("Entropy Metric -> Adult Dataset")
+    names = ["Age", "Workclass", "Education", "Marital Status", "Occupation", "Race", "Sex", "Country"]
+    util.hierarchies = glob.glob("data/arx/hierarchies/adult/*.csv")
+    for i in range(len(kvalues)):
+        k = kvalues[i]
+        filename = datasetsAdult[i]
+        x, y = scanner.readData(filename)
+        prob = util.probabilities(x)
+        print("\nEntropy -> Adult: K = " + str(k))
+        for j in range(len(prob)):
+            p = list(prob[j].values())
+            print(names[j] + ": " + str(entropy.entropy(p)))
 
+    # Entropy Bike Sharing
+    print("\n\nEntropy Metric -> Bike Sharing Dataset")
+    names = ["Season", "Year", "Month", "hour", "Holiday", "weekday", "working day", "weather", "temperature",
+             "feeling temperate", "humidity", "wind speed"]
+    files = ["data/bike-sharing/bike-sharing.csv"] + discernibilityBikeDataset
+    util.hierarchies = glob.glob("data/arx/hierarchies/bike-sharing/*.csv")
+    for i in range(len(kvalues)):
+        k = kvalues[i]
+        filename = files[i]
+        x, y = scanner.readData(filename)
+        prob = util.probabilities(x)
+        print("\nEntropy -> Bike Sharing: K = " + str(k))
+        for j in range(len(prob)):
+            p = list(prob[j].values())
+            print(names[j] + ": " + str(entropy.entropy(p)))
+
+    # KL-Divergence Adult
+    print("\nKL-Divergence - > Adult")
+    KL.originalFile = "data/adult/income-classes/adult.csv"
+    util.hierarchies = glob.glob("data/arx/hierarchies/adult/*.csv")
+    for i in range(len(kvalues)):
+        k = kvalues[i]
+        filename = datasetsAdult[i]
+        x, y = scanner.readData(filename)
+        klk = KL.KL(x)
+        print("K = " + str(k) + ": " + str(klk))
+
+    # KL-Divergence Bike-Sharing
+    print("\nKL-Divergence - > Bike Sharing")
+    KL.originalFile = "data/bike-sharing/bike-sharing.csv"
+    util.hierarchies = glob.glob("data/arx/hierarchies/bike-sharing/*.csv")
+    for i in range(len(kvalues)):
+        k = kvalues[i]
+        filename = files[i]
+        x, y = scanner.readData(filename)
+        klk = KL.KL(x)
+        print("K = " + str(k) + ": " + str(klk))
