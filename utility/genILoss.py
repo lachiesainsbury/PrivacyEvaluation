@@ -4,10 +4,10 @@ import math
 import utility.hierarchyBuilder as hb
 
 
-hierarchyDirectory = "data/arx/hierarchies/bike-sharing/"
 hierarchies = []
 
-def calcGenILoss(x):
+def calcGenILoss(x, hierarchyDirectory):
+    hierarchies.clear()
     # Number of records in the dataset
     recordCount = len(x)
 
@@ -15,7 +15,7 @@ def calcGenILoss(x):
     attributeCount = len(x[0])
 
     # Build tree data structures for each csv hierarchy file
-    buildHierarchies()
+    buildHierarchies(hierarchyDirectory)
 
     # Tracks the cumulative loss value of each cell in the dataset
     loss = 0
@@ -27,11 +27,12 @@ def calcGenILoss(x):
             # Find the node at x[j][i] in the current attributes hierarchy
             node = hb.findNode(hierarchy, x[j][i])
 
+            if node == None:
+                print(i, j, x[j][i])
             # If the node has no children, loss = 0, so just skip it
             if not node.children:
                 continue
             else:
-                # TODO: Test if children are digits > substract digit value instead
                 # Calculates the number of generalized nodes
                 generalizedInterval = len(node.children) - 1
                 # Calculates the total number of nodes at one level lower in the hierarchy
@@ -46,7 +47,7 @@ def calcGenILoss(x):
 
 
 # Builds a hierarchy for each csv file within the hierarchyDirectory
-def buildHierarchies():
+def buildHierarchies(hierarchyDirectory):
     for filename in os.listdir(hierarchyDirectory):
         hierarchy = hb.buildHierarchy(scanner.readHierarchy(hierarchyDirectory + filename))
         hierarchies.append(hierarchy)
