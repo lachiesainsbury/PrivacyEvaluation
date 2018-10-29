@@ -109,7 +109,7 @@ if __name__ == '__main__':
 
 
     # PRIVACY MEASURES BELOW HERE
-
+    print("")
     # Bike data has been omitted for Confidential Attribute Equivocation and variants due to long processing time.
     print("=== Confidential Attribute Graphs")
     privacyMain.att_equiv_graphs(["confidentialAttributeTesting.csv",
@@ -125,7 +125,7 @@ if __name__ == '__main__':
     privacyMain.att_equivalence_equiv_filter(
         [["adult/income-values-not-suppressed/", ["Age", "Education"]]])
 
-
+    print("")
     # Entropy Adult
     print("Entropy Metric -> Adult Dataset")
     names = ["Age", "Workclass", "Education", "Marital Status", "Occupation", "Race", "Sex", "Country"]
