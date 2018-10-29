@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 import scanner
 import privacy.util as util
-import privacy.novelEntropy as ne
+import privacy.entropy as ne
 from privacy import AttributeEquivocation as ae
 
 
