@@ -13,10 +13,10 @@ if __name__ == '__main__':
     kvalues = [1, 2, 5, 10, 25, 50, 75, 100]
     kvalues2 = [2, 5, 25, 100]
     discernibilityKValues = [2, 5, 10, 25, 50, 75, 100]
-    datasetsAdult = ["data/adult/income-values/adult.csv", "data/adult/income-values/2-anonymised.csv",
-                "data/adult/income-values/5-anonymised.csv", "data/adult/income-values/10-anonymised.csv",
-                "data/adult/income-values/25-anonymised.csv", "data/adult/income-values/50-anonymised.csv",
-                "data/adult/income-values/75-anonymised.csv", "data/adult/income-values/100-anonymised.csv"]
+    datasetsAdult = ["data/adult/income-values-not-suppressed/adult.csv", "data/adult/income-values-not-suppressed/2-anonymised.csv",
+                "data/adult/income-values-not-suppressed/5-anonymised.csv", "data/adult/income-values-not-suppressed/10-anonymised.csv",
+                "data/adult/income-values-not-suppressed/25-anonymised.csv", "data/adult/income-values-not-suppressed/50-anonymised.csv",
+                "data/adult/income-values-not-suppressed/75-anonymised.csv", "data/adult/income-values-not-suppressed/100-anonymised.csv"]
 
     datasetsBikeSharing = ["data/bike-sharing/bike-sharing.csv", "data/bike-sharing/2-anonymised.csv",
                            "data/bike-sharing/5-anonymised.csv", "data/bike-sharing/10-anonymised.csv",
