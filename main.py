@@ -25,12 +25,28 @@ if __name__ == '__main__':
                      "data/bike-sharing/100-anonymised.csv"]
 
 
-
-    gils = []
+    # Generalized Information Loss Metric -> Adult Dataset
+    lossValues = []
     for i in range(len(datasetsAdult)):
         x, y = scanner.readData(datasetsAdult[i])
-        gils.append(gil.calcGenILoss(x))
+        lossValues.append(gil.calcGenILoss(x, "data/arx/hierarchies/adult/"))
 
+    print("Generalized Information Loss Metric -> Adult Dataset")
+    for i in range(len(lossValues)):
+        print("k = " + str(kvalues[i]) + " GenILoss -> " + str("{0:.2f}".format(lossValues[i])))
+    print("")
+
+
+    # Generalized Information Loss Metric -> Bike Dataset
+    lossValues = []
+    for i in range(len(discernibilityBikeDataset)):
+        x, y = scanner.readData(discernibilityBikeDataset[i])
+        lossValues.append(gil.calcGenILoss(x, "data/arx/hierarchies/bike-sharing/"))
+
+    print("Generalized Information Loss Metric -> Bike Sharing Dataset")
+    for i in range(len(lossValues)):
+        print("k = " + str(discernibilityKValues[i]) + " GenILoss -> " + str("{0:.2f}".format(lossValues[i])))
+    print("")
 
 
     # Average Equivalence Class Size Metric -> Adult Dataset
