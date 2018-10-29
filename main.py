@@ -3,6 +3,7 @@ import graph
 import utility.genILoss as gil
 import utility.aecsm as aecsm
 import utility.discMetric as dm
+from privacy import privacyMain
 
 if __name__ == '__main__':
     dmarray = []
@@ -104,6 +105,21 @@ if __name__ == '__main__':
 
 
     # PRIVACY MEASURES BELOW HERE
+
+    # Bike data has been omitted for Confidential Attribute Equivocation and variants due to long processing time.
+    print("=== Confidential Attribute Graphs")
+    privacyMain.att_equiv_graphs(["confidentialAttributeTesting.csv",
+                      "adult/income-values-not-suppressed/adult.csv"],
+                     "graphs/AttEquiv/")
+    print("=== Confidential Attribute Graphs Can be found in graphs/AttEquiv/")
+
+    print("=== Confidential Equivalence Attribute Values")
+    privacyMain.att_equivalence_equiv(
+        ["", "adult/income-values-not-suppressed/"])
+
+    print("=== Confidential Equivalence Attribute Values w/ Filter [Age, Education]")
+    privacyMain.att_equivalence_equiv_filter(
+        [["adult/income-values-not-suppressed/", ["Age", "Education"]]])
 
 
 

@@ -121,6 +121,47 @@ def read_data_columns(filename):
     return x
 
 
+def read_data_columns_equiv(filename):
+    with open(filename, 'r') as f:
+        df = pandas.read_csv(f)
+        equiv_dict = {}
+        for row in df.itertuples():
+            non_sensitive, sensitive = row[1:-1], row[-1]
+            try:
+                sensitive = int(sensitive)
+            except ValueError:
+                print("Error : Non numerical value in sensitive attribute, value :", sensitive)
+
+            if non_sensitive not in equiv_dict:
+                equiv_dict[non_sensitive] = [sensitive]
+            else:
+                equiv_dict[non_sensitive].append(sensitive)
+    return equiv_dict
+
+
+def read_data_columns_equiv_filter(filename, known_attributes):
+    with open(filename, 'r') as f:
+        df = pandas.read_csv(f)
+        equiv_dict = {}
+        known_attributes = frozenset(known_attributes).intersection(df[1:-1])
+        # print(known_attributes)
+        for row in df.iterrows():
+            sensitive = row[1][-1]
+            non_sensitive = []
+            for known_attribute in known_attributes:
+                non_sensitive.append(row[1][known_attribute])
+            try:
+                sensitive = int(sensitive)
+            except ValueError:
+                print("Error : Non numerical value in sensitive attribute")
+            non_sensitive = frozenset(non_sensitive)
+            if non_sensitive not in equiv_dict:
+                equiv_dict[non_sensitive] = [sensitive]
+            else:
+                equiv_dict[non_sensitive].append(sensitive)
+    return equiv_dict
+
+
 # Generates new random salaries and writes these values to file
 def generateSalaries(x, y):
     occupations = getColumn(x, 4)

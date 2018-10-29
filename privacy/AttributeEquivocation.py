@@ -6,6 +6,33 @@ import matplotlib.pyplot as plt
 from privacy import util
 
 
+def equivalence_equivocate(equiv_class_values_dict):
+    equivalence_class_probability = {}
+    print("# equivalence classes :", len(equiv_class_values_dict.keys()))
+    equivalence_class_total = 0
+
+    # real bad way of counting rows
+    for equiv_class in equiv_class_values_dict:
+        equivalence_class_total += len(equiv_class_values_dict[equiv_class])
+
+    for equiv_class in equiv_class_values_dict:
+        equivalence_class_probability[equiv_class] = len(equiv_class_values_dict[equiv_class]) / equivalence_class_total
+
+    equivocation_sum = 0
+    for equiv_class in equiv_class_values_dict:
+        prob = util.probabibilityDict(equiv_class_values_dict[equiv_class])
+        equiv = equivocate(list(prob.keys()), list(prob.values()))
+        equivocation_sum += equivalence_class_probability[equiv_class] * sum(list(equiv.values()))
+    print("H(ε) area :", equivocation_sum)
+
+    eps_length = []
+    for equiv_class in equiv_class_values_dict:
+        prob = util.probabibilityDict(equiv_class_values_dict[equiv_class])
+        eps_length.append(len(find_eps(list(prob.keys()))))
+
+    return
+
+
 def equivocate(x, p):
     eps = find_eps(x)
 
@@ -38,7 +65,7 @@ def equivocate(x, p):
 
 
 def fill_dict(x):
-    # Not strictly necessary for graphing, but makes area calculation easy (Just sum)
+    # Not strictly necessary for graphing, but makes area calculation easy (Just sum these values)
     dict_range = list(range(min(x.keys()), max(x.keys()) + 1))
     filled_dict = {}
     recent = x[0]
@@ -69,7 +96,6 @@ def entropy(p):
 def export_attribute_equivocation_graph(name, attribute, output):
     start_time = time.time()
     probabilities = util.probabibilityDict(attribute)
-    print("Attribute Equivocation :", name)
     item = []
     item_prob = []
     for tup in sorted(probabilities):
@@ -83,7 +109,6 @@ def export_attribute_equivocation_graph(name, attribute, output):
     plt.xlabel("ε")
     plt.ylabel("H(ε)")
     plt.figtext(0.7, 0.9, "Area = {:0.2f}".format(sum(equiv.values())), backgroundcolor="white")
-    # print("AttEquiv_{}.svg".format(name))
-    plt.savefig("{}AttEquiv_{}.svg".format(output, name))
+    print("{}.svg".format(name))
+    plt.savefig("{}_{}.png".format(output, name))
     plt.clf()
-    print("Attribute Equivocation :", name, "finished in", time.time() - start_time)
